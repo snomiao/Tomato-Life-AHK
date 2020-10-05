@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "deploy",
+			"problemMatcher": [],
+			"label": "npm: deploy",
+			"detail": "auto-start-enable.bat",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}

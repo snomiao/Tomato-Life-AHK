@@ -11,8 +11,8 @@
 ## 安装
 
 ```bat
-REM 下载本项目
-git clone https://github.com/snomiao/tomato-life-ahk
+REM 下载本项目源码
+git clone https://github.com/snomiao/Tomato-Life-AHK
 
 REM 配置自启动（并自动运行一次）
 auto-start-enable.bat

@@ -1,11 +1,10 @@
 ﻿#SingleInstance, force
 #Persistent
-; ToolTip, % UnixTimeStamp()
-; Sleep, 1000
 SetTimer ticker, 1000
-; SetTimer, Label [, Period|On|Off]
 
 global TomatoLife_LastStatus := ""
+Menu, tray, icon, Tomato.ico
+
 Return
 
 UnixTimeStamp() {
@@ -13,14 +12,16 @@ UnixTimeStamp() {
     DllCall("GetSystemTimeAsFileTime", "Int64P", FileTime)
     Return ((FileTime - UnixStart) // 10000) - 27 ; currently (2019-01-21) 27 leap seconds have been added
 }
-CheckTomato(t){
-    UnixTimeStamp()
+CheckTomato(){
+    return Mod(UnixTimeStamp()/1000/60, 30) < 25 ? "工作" : "休息"
 }
 ticker:
-    timeout := 1000 - Mod(UnixTimeStamp(), 1000) ; 对齐到下一秒的 0 毫秒
+    ; 对齐到下一分钟的 0 毫秒
+    interval := 60000
+    timeout := interval - Mod(UnixTimeStamp(), interval)
     SetTimer ticker, %timeout%
     
-    TomatoLife_Status := Mod(UnixTimeStamp()/1000/60, 30) < 25 ? "工作" : "休息"
+    TomatoLife_Status := CheckTomato()
 
     if(TomatoLife_LastStatus != TomatoLife_Status){
         TomatoLife_LastStatus := TomatoLife_Status
