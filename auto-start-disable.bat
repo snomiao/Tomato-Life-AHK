@@ -1,0 +1,1 @@
+sudo.bat SCHTASKS /Delete /TN TomatoLife
