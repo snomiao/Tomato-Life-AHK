@@ -30,7 +30,8 @@ ticker:
     }
     if(TomatoLife_Status == "工作"){
         TrayTip, , 工作时间, 1
-        Send #^{F4}#^{Left}#^{Left}#^{Left}#^{Left}#^{Left}#^{Left}#^{Left}#^{Left}#^{Left}
+        ; Send #^{F4}#^{Left}#^{Left}#^{Left}#^{Left}#^{Left}#^{Left}#^{Left}#^{Left}#^{Left}
+        Send #d
         try{
             Run %USERPROFILE%/.tomato-life/on_work.bat
             Run %USERPROFILE%/.tomato-life/on_work.vbs
@@ -38,7 +39,8 @@ ticker:
     }
     if(TomatoLife_Status == "休息"){
         TrayTip, , 休息时间, 1
-        Send #^d
+        ; Send #^d
+        Send #d
         try{
             Run %USERPROFILE%/.tomato-life/on_life.bat
             Run %USERPROFILE%/.tomato-life/on_life.vbs
